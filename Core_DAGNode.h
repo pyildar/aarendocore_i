@@ -333,6 +333,37 @@ public:
     }
 };
 
+// ============================================================================
+// GLOBAL FUNCTIONS - Node management
+// ============================================================================
+
+// Get global node pool
+DAGNodePool<100000>& getGlobalNodePool() noexcept;
+
+// Node connection functions
+bool connectNodes(DAGNode* source, DAGNode* target) noexcept;
+bool disconnectNodes(DAGNode* source, DAGNode* target) noexcept;
+
+// Node factory functions
+DAGNode* createInputNode(DAGId dagId, StreamId streamId) noexcept;
+DAGNode* createProcessingNode(DAGId dagId, ProcessingUnitType type) noexcept;
+DAGNode* createOutputNode(DAGId dagId, StreamId streamId) noexcept;
+
+// Node execution helpers
+bool prepareNodeExecution(DAGNode* node) noexcept;
+void completeNodeExecution(DAGNode* node, u64 latencyNs, u64 bytesProcessed) noexcept;
+void markNodeError(DAGNode* node, u32 errorCode) noexcept;
+void resetNode(DAGNode* node) noexcept;
+
+// Node optimization
+void setNodeNumaAffinity(DAGNode* node, i32 numaNode) noexcept;
+void setNodeCpuAffinity(DAGNode* node, u32 cpuMask) noexcept;
+void enableNodeSIMD(DAGNode* node, u32 width) noexcept;
+void setNodeCacheHints(DAGNode* node, u32 hints) noexcept;
+
+// Node validation
+bool validateNode(const DAGNode& node) noexcept;
+
 AARENDOCORE_NAMESPACE_END
 
 #endif // AARENDOCORE_CORE_DAGNODE_H

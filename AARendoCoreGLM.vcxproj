@@ -224,7 +224,9 @@
     <ClInclude Include="Core_MessageTypes.h" />
     <ClInclude Include="Core_DAGTypes.h" />
     <ClInclude Include="Core_DAGNode.h" />
+    <ClInclude Include="Core_DAGBuilder.h" />
     <ClCompile Include="Core_DAGNode.cpp" />
+    <ClCompile Include="Core_DAGBuilder.cpp" />
   </ItemGroup>
   
   <!-- Helper Headers -->

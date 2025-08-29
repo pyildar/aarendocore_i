@@ -15,6 +15,7 @@
 #include "Core_Platform.h"      // LEVEL 0: Platform macros
 #include "Core_Types.h"         // LEVEL 1: Basic types
 #include "Core_MessageTypes.h"  // LEVEL 3: Message types
+#include <functional>           // For std::hash
 
 AARENDOCORE_NAMESPACE_BEGIN
 
@@ -121,6 +122,19 @@ enum class NodeState : u32 {
     ERROR          = 0x05,  // Error state
     SUSPENDED      = 0x06,  // Temporarily suspended
     TERMINATED     = 0x07   // Permanently stopped
+};
+
+// ============================================================================
+// DAG STATE - Runtime state of entire DAG
+// ============================================================================
+enum class DAGState : u32 {
+    UNINITIALIZED  = 0x00,  // Not yet initialized
+    READY          = 0x01,  // Ready to execute
+    RUNNING        = 0x02,  // Currently running
+    PAUSED         = 0x03,  // Temporarily paused
+    COMPLETED      = 0x04,  // Execution completed
+    ERROR          = 0x05,  // Error state
+    TERMINATED     = 0x06   // Permanently stopped
 };
 
 // ============================================================================
@@ -308,6 +322,26 @@ inline const char* nodeStateToString(NodeState state) noexcept {
         default: return "UNKNOWN";
     }
 }
+
+// ============================================================================
+// HASH COMPARE FOR TBB - Custom hash_compare for NodeId and DAGId
+// ============================================================================
+// PSYCHOTIC: TBB needs a special hash_compare class with hash() and equal() methods!
+
+template<typename IdType>
+struct IdHashCompare {
+    std::size_t hash(const IdType& id) const noexcept {
+        return std::hash<u64>()(id.value);
+    }
+    
+    bool equal(const IdType& a, const IdType& b) const noexcept {
+        return a.value == b.value;
+    }
+};
+
+// Specific typedefs for convenience
+using NodeIdHashCompare = IdHashCompare<NodeId>;
+using DAGIdHashCompare = IdHashCompare<DAGId>;
 
 AARENDOCORE_NAMESPACE_END
 
