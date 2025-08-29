@@ -146,7 +146,17 @@
     </Link>
   </ItemDefinitionGroup>
   
-  <!-- FOUNDATION LAYER - COMPILER PROCESSES FIRST -->
+  <!-- LEVEL 0: ZERO DEPENDENCIES - MUST COMPILE FIRST -->
+  <ItemGroup Label="Level0">
+    <ClInclude Include="Core_PrimitiveTypes.h" />
+    <ClInclude Include="Core_CompilerEnforce.h" />
+    <ClInclude Include="Core_StaticAsserts.h" />
+    <ClCompile Include="Core_PrimitiveTypes.cpp" />
+    <ClCompile Include="Core_CompilerEnforce.cpp" />
+    <ClCompile Include="Core_StaticAsserts.cpp" />
+  </ItemGroup>
+  
+  <!-- FOUNDATION LAYER - COMPILER PROCESSES SECOND -->
   <ItemGroup Label="Foundation">
     <ClInclude Include="Core_Platform.h" />
     <ClInclude Include="Core_Types.h" />
@@ -158,7 +168,7 @@
     <ClCompile Include="Core_Alignment.cpp" />
   </ItemGroup>
   
-  <!-- PHASE 1: MEMORY & THREADING - COMPILER PROCESSES SECOND -->
+  <!-- PHASE 1: MEMORY & THREADING - COMPILER PROCESSES THIRD -->
   <ItemGroup Label="MemoryThreading">
     <ClInclude Include="Core_Atomic.h" />
     <ClInclude Include="Core_Memory.h" />
@@ -170,7 +180,7 @@
     <ClCompile Include="Core_Threading.cpp" />
   </ItemGroup>
   
-  <!-- PHASE 2: SESSION MANAGEMENT - COMPILER PROCESSES THIRD -->
+  <!-- PHASE 2: SESSION MANAGEMENT - COMPILER PROCESSES FOURTH -->
   <ItemGroup Label="SessionManagement">
     <ClInclude Include="Core_Session.h" />
     <ClInclude Include="Core_SessionManager.h" />
