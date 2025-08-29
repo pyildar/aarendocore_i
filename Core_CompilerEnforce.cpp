@@ -27,12 +27,12 @@ namespace {
     ENFORCE_NO_MUTEX(TestNoMutex);  // Should compile
     
     // Test 2: Verify alignment enforcement
-    struct CACHE_ALIGNED TestCacheAligned {
+    struct alignas(64) TestCacheAligned {
         char data[64];
     };
     static_assert(alignof(TestCacheAligned) == 64, "Cache alignment failed");
     
-    struct ULTRA_ALIGNED TestUltraAligned {
+    struct alignas(2048) TestUltraAligned {
         char data[2048];
     };
     static_assert(alignof(TestUltraAligned) == 2048, "Ultra alignment failed");
@@ -46,7 +46,9 @@ namespace {
     STRONG_TYPEDEF(int, TestId);
     
     // Test 5: Stack-only class
-    STACK_ONLY_CLASS(TestStackOnly)
+    class TestStackOnly {
+        PREVENT_HEAP_ALLOCATION();
+    public:
         int value;
     };
     
