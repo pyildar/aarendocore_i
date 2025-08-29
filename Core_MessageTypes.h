@@ -55,6 +55,7 @@ enum class MessageType : u32 {
     STATISTIC_VALUE     = 0x3002,  // Statistical measure
     ML_PREDICTION       = 0x3003,  // ML model output
     PATTERN_MATCH       = 0x3004,  // Pattern detection
+    AGGREGATED_DATA     = 0x3005,  // Aggregated multi-stream data
     
     // === SIGNALS & DECISIONS (0x4000) ===
     TRADING_SIGNAL      = 0x4001,  // Buy/sell signal
@@ -184,6 +185,21 @@ struct alignas(64) ControlMessage {
 static_assert(sizeof(ControlMessage) == 64, "ControlMessage must be exactly 64 bytes");
 
 // ============================================================================
+// AGGREGATED MESSAGE - EXACTLY 64 bytes
+// ============================================================================
+struct alignas(64) AggregatedMessage {
+    MessageHeader header;     // 16 bytes
+    u32 aggregationType;     // 4 bytes - Type of aggregation
+    u32 count;               // 4 bytes - Number of messages aggregated
+    f64 value1;              // 8 bytes - First aggregated value (e.g., average price)
+    f64 value2;              // 8 bytes - Second aggregated value (e.g., total volume)
+    f64 value3;              // 8 bytes - Third aggregated value
+    f64 value4;              // 8 bytes - Fourth aggregated value
+    u64 reserved;            // 8 bytes - Reserved for future use
+};
+static_assert(sizeof(AggregatedMessage) == 64, "AggregatedMessage must be exactly 64 bytes");
+
+// ============================================================================
 // GENERIC MESSAGE UNION - EXACTLY 64 bytes
 // ============================================================================
 // Origin: Union for type-safe message passing
@@ -197,6 +213,7 @@ union Message {
     IndicatorMessage indicator;
     ErrorMessage error;
     ControlMessage control;
+    AggregatedMessage aggregated;
     u8 raw[64];  // Raw bytes for custom messages
 };
 // static_assert(sizeof(Message) == 64, "Message union must be exactly 64 bytes");

@@ -208,7 +208,9 @@
   <!-- PHASE 4: STREAM SYNCHRONIZATION - COMPILER PROCESSES SIXTH -->
   <ItemGroup Label="StreamSynchronization">
     <ClInclude Include="Core_StreamSynchronizer.h" />
+    <ClInclude Include="Core_StreamMultiplexer.h" />
     <ClCompile Include="Core_StreamSynchronizer.cpp" />
+    <ClCompile Include="Core_StreamMultiplexer.cpp" />
   </ItemGroup>
   
   <!-- PHASE 5: FLUENT API - COMPILER PROCESSES SEVENTH -->
