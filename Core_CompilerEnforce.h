@@ -26,14 +26,19 @@
 // ==========================================================================
 
 // Declare which compilation level a file belongs to
+// Only declare if not already declared to prevent redefinition
 #define DECLARE_COMPILATION_LEVEL(level) \
     static_assert(level >= 0 && level <= 10, "Invalid compilation level"); \
-    static constexpr int FILE_COMPILATION_LEVEL = level; \
-    namespace { constexpr int ValidateLevel = level; }
+    namespace { \
+        struct CompilationLevel##level { \
+            static constexpr int value = level; \
+        }; \
+        constexpr int CurrentLevel = CompilationLevel##level::value; \
+    }
 
 // Enforce dependency rules
 #define ENFORCE_DEPENDENCY_LEVEL(required_level) \
-    static_assert(FILE_COMPILATION_LEVEL >= required_level, \
+    static_assert(CurrentLevel >= required_level, \
                   "Cannot include higher level dependency");
 
 // ==========================================================================
@@ -155,14 +160,8 @@ inline constexpr bool has_mutex_v = has_mutex<T>::value;
 // MEMORY ALIGNMENT ENFORCEMENT
 // ==========================================================================
 
-// Enforce cache line alignment
-#define CACHE_ALIGNED alignas(64)
-
-// Enforce page alignment
-#define PAGE_ALIGNED alignas(4096)
-
-// Enforce ultra alignment
-#define ULTRA_ALIGNED alignas(2048)
+// NOTE: Alignment macros (CACHE_ALIGNED, PAGE_ALIGNED, ULTRA_ALIGNED) 
+// are defined in Core_Alignment.h to avoid duplication
 
 // Verify alignment at compile time
 template<typename T, size_t Alignment>

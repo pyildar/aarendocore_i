@@ -188,6 +188,17 @@
     <ClCompile Include="Core_SessionManager.cpp" />
   </ItemGroup>
   
+  <!-- PHASE 3: PROCESSING UNITS - COMPILER PROCESSES FIFTH -->
+  <ItemGroup Label="ProcessingUnits">
+    <ClInclude Include="Core_IProcessingUnit.h" />
+    <ClInclude Include="Core_BaseProcessingUnit.h" />
+    <ClInclude Include="Core_TickProcessingUnit.h" />
+    <ClInclude Include="Core_LockFreeQueue.h" />
+    <ClCompile Include="Core_IProcessingUnit.cpp" />
+    <ClCompile Include="Core_BaseProcessingUnit.cpp" />
+    <ClCompile Include="Core_TickProcessingUnit.cpp" />
+  </ItemGroup>
+  
   <!-- Module Definition File -->
   <ItemGroup>
     <None Include="AARendoCore.def" />

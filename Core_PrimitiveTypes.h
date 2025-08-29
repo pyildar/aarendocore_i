@@ -68,6 +68,9 @@ using AtomicI16 = std::atomic<i16>;
 using AtomicI32 = std::atomic<i32>;
 using AtomicI64 = std::atomic<i64>;
 
+using AtomicF32 = std::atomic<f32>;
+using AtomicF64 = std::atomic<f64>;
+
 using AtomicBool = std::atomic<bool>;
 using AtomicSize = std::atomic<usize>;
 
