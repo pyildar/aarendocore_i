@@ -88,7 +88,7 @@
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <CreateHotpatchableImage>false</CreateHotpatchableImage>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <DisableSpecificWarnings>4514;4820;4324</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4514;4820;4324;4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -127,7 +127,7 @@
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <CreateHotpatchableImage>false</CreateHotpatchableImage>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <DisableSpecificWarnings>4514;4820;4324</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4514;4820;4324;4251</DisableSpecificWarnings>
       <Optimization>MaxSpeed</Optimization>
       <WholeProgramOptimization>true</WholeProgramOptimization>
     </ClCompile>
@@ -209,6 +209,24 @@
   <ItemGroup Label="StreamSynchronization">
     <ClInclude Include="Core_StreamSynchronizer.h" />
     <ClCompile Include="Core_StreamSynchronizer.cpp" />
+  </ItemGroup>
+  
+  <!-- PHASE 5: FLUENT API - COMPILER PROCESSES SEVENTH -->
+  <ItemGroup Label="FluentAPI">
+    <ClInclude Include="Core_FluentAPI.h" />
+    <ClCompile Include="Core_FluentAPI.cpp" />
+  </ItemGroup>
+  
+  <!-- Helper Headers -->
+  <ItemGroup Label="Helpers">
+    <ClInclude Include="check_sizes.h" />
+  </ItemGroup>
+  
+  <!-- Test Files -->
+  <ItemGroup Label="Tests">
+    <ClCompile Include="test_real_sizes.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   
   <!-- Main Entry Point -->
