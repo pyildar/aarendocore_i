@@ -205,6 +205,17 @@
     <ClCompile Include="Core_InterpolationProcessingUnit.cpp" />
   </ItemGroup>
   
+  <!-- PHASE 4: STREAM SYNCHRONIZATION - COMPILER PROCESSES SIXTH -->
+  <ItemGroup Label="StreamSynchronization">
+    <ClInclude Include="Core_StreamSynchronizer.h" />
+    <ClCompile Include="Core_StreamSynchronizer.cpp" />
+  </ItemGroup>
+  
+  <!-- Main Entry Point -->
+  <ItemGroup Label="MainEntry">
+    <ClCompile Include="AARendoCore.cpp" />
+  </ItemGroup>
+  
   <!-- Module Definition File -->
   <ItemGroup>
     <None Include="AARendoCore.def" />

@@ -72,6 +72,10 @@ using AtomicI64 = std::atomic<i64>;
 using AtomicBool = std::atomic<bool>;
 using AtomicSize = std::atomic<usize>;
 
+// Floating point atomics
+using AtomicF32 = std::atomic<f32>;
+using AtomicF64 = std::atomic<f64>;
+
 // Verify lock-free at compile time
 static_assert(std::atomic<u64>::is_always_lock_free, "AtomicU64 must be lock-free");
 static_assert(std::atomic<i64>::is_always_lock_free, "AtomicI64 must be lock-free");
@@ -99,6 +103,110 @@ struct FixedArray {
     constexpr T& operator[](usize idx) noexcept { return data[idx]; }
     constexpr const T& operator[](usize idx) const noexcept { return data[idx]; }
 };
+
+// ============================================================================
+// MARKET DATA STRUCTURES - PSYCHOTIC PRECISION FOR TRADING
+// ============================================================================
+
+// Origin: Structure for market tick data
+// Scope: Used throughout processing pipeline
+struct alignas(32) Tick {
+    // Origin: Member - Timestamp in nanoseconds, Scope: Tick lifetime
+    u64 timestamp;
+    
+    // Origin: Member - Price value, Scope: Tick lifetime
+    f64 price;
+    
+    // Origin: Member - Volume traded, Scope: Tick lifetime
+    f64 volume;
+    
+    // Origin: Member - Bit flags for tick properties, Scope: Tick lifetime
+    u32 flags;
+    
+    // Padding to 32 bytes
+    char padding[4];
+};
+
+static_assert(sizeof(Tick) == 32, "Tick must be exactly 32 bytes");
+
+// Origin: Structure for bar/candle data
+// Scope: Used for aggregated time series
+struct alignas(64) Bar {
+    // Origin: Member - Bar start timestamp, Scope: Bar lifetime
+    u64 timestamp;
+    
+    // Origin: Member - Opening price, Scope: Bar lifetime
+    f64 open;
+    
+    // Origin: Member - High price, Scope: Bar lifetime
+    f64 high;
+    
+    // Origin: Member - Low price, Scope: Bar lifetime
+    f64 low;
+    
+    // Origin: Member - Closing price, Scope: Bar lifetime
+    f64 close;
+    
+    // Origin: Member - Total volume, Scope: Bar lifetime
+    f64 volume;
+    
+    // Origin: Member - Number of ticks in bar, Scope: Bar lifetime
+    u32 tickCount;
+    
+    // Padding to 64 bytes
+    char padding[4];
+};
+
+static_assert(sizeof(Bar) == 64, "Bar must be exactly 64 bytes");
+
+// Origin: Structure for order data  
+// Scope: Order processing pipeline
+struct alignas(32) Order {
+    // Origin: Member - Unique order ID, Scope: Order lifetime
+    u64 orderId;        // offset 0, size 8
+    
+    // Origin: Member - Order price, Scope: Order lifetime
+    f64 price;          // offset 8, size 8
+    
+    // Origin: Member - Order quantity, Scope: Order lifetime
+    f64 quantity;       // offset 16, size 8
+    
+    // Origin: Member - Order type flags, Scope: Order lifetime
+    u32 type;           // offset 24, size 4
+    
+    // Origin: Member - Explicit padding to 32 bytes, Scope: Order lifetime
+    u32 _pad;           // offset 28, size 4
+};
+
+static_assert(sizeof(Order) == 32, "Order must be exactly 32 bytes");
+
+// Origin: Structure for stream data
+// Scope: Multi-stream processing
+struct alignas(AARENDOCORE_CACHE_LINE_SIZE) StreamData {
+    // Origin: Member - Stream identifier, Scope: Stream lifetime
+    u32 streamId;
+    
+    // Origin: Member - Data type identifier, Scope: Stream lifetime
+    u32 dataType;
+    
+    // Origin: Member - Timestamp of data, Scope: Stream lifetime
+    u64 timestamp;
+    
+    // Origin: Member - Sequence number, Scope: Stream lifetime
+    u32 sequenceNum;
+    
+    // Origin: Member - Actual payload size, Scope: Stream lifetime
+    u32 payloadSize;
+    
+    // Origin: Member - Generic payload, Scope: Stream lifetime
+    u8 payload[1024];
+    
+    // Padding to cache line (remaining bytes to reach 1088 = 17 cache lines)
+    char padding[24];
+};
+
+static_assert(sizeof(StreamData) % AARENDOCORE_CACHE_LINE_SIZE == 0, 
+              "StreamData must be cache-line aligned");
 
 // ============================================================================
 // SESSION ID TYPE - Critical for 10M sessions
