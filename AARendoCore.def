@@ -1,0 +1,58 @@
+; AARendoCore.def - DLL Export Definition File
+; ULTRA-EXTREME PRECISION - Every export is deliberate
+; The compiler uses this to know EXACTLY what crosses the DLL boundary
+
+LIBRARY AARendoCoreGLM
+
+EXPORTS
+    ; ========================================================================
+    ; PLATFORM VALIDATION EXPORTS
+    ; ========================================================================
+    AARendoCore_ValidatePlatform
+    AARendoCore_GetPlatformInfo
+    
+    ; ========================================================================
+    ; TYPE SYSTEM EXPORTS
+    ; ========================================================================
+    AARendoCore_GetTypeInfo
+    AARendoCore_GenerateSessionId
+    AARendoCore_ValidateSessionId
+    
+    ; ========================================================================
+    ; CONFIGURATION EXPORTS
+    ; ========================================================================
+    AARendoCore_GetConfigInfo
+    AARendoCore_ValidateConfig
+    AARendoCore_GetMaxSessions
+    AARendoCore_GetMemoryPoolSize
+    AARendoCore_GetWorkerThreads
+    
+    ; ========================================================================
+    ; ALIGNMENT EXPORTS
+    ; ========================================================================
+    AARendoCore_GetAlignmentInfo
+    AARendoCore_CheckAlignment
+    AARendoCore_AllocateAligned
+    AARendoCore_FreeAligned
+    AARendoCore_AlignUp
+    AARendoCore_AlignDown
+    
+    ; ========================================================================
+    ; INITIALIZATION EXPORTS (will be added as we build)
+    ; ========================================================================
+    ; AARendoCore_Initialize
+    ; AARendoCore_Shutdown
+    
+    ; ========================================================================
+    ; SESSION MANAGEMENT EXPORTS (will be added)
+    ; ========================================================================
+    ; AARendoCore_CreateSession
+    ; AARendoCore_DestroySession
+    ; AARendoCore_ProcessTick
+    
+    ; ========================================================================
+    ; NINJATRADER INTERFACE EXPORTS (will be added)
+    ; ========================================================================
+    ; AARendoCore_OnMarketData
+    ; AARendoCore_OnOrderUpdate
+    ; AARendoCore_OnPositionUpdate

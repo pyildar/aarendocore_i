@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="0_Foundation">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;h</Extensions>
+    </Filter>
+    <Filter Include="1_Memory">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>cpp;h</Extensions>
+    </Filter>
+    <Filter Include="2_DataStructures">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>cpp;h</Extensions>
+    </Filter>
+    <Filter Include="3_Infrastructure">
+      <UniqueIdentifier>{DDB6F9C3-8B9D-4E8C-8C3A-4F8E8A9C3D7B}</UniqueIdentifier>
+      <Extensions>cpp;h</Extensions>
+    </Filter>
+    <Filter Include="4_Components">
+      <UniqueIdentifier>{A8E4D6C8-9E7B-4A3C-B8F5-2D6E8A9C3F7B}</UniqueIdentifier>
+      <Extensions>cpp;h</Extensions>
+    </Filter>
+    <Filter Include="Definitions">
+      <UniqueIdentifier>{E3C5D6A8-7F2B-4B1C-A9D5-3E7F9B2A1C8D}</UniqueIdentifier>
+      <Extensions>def</Extensions>
+    </Filter>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ClInclude Include="Core_Platform.h">
+      <Filter>0_Foundation</Filter>
+    </ClInclude>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ClCompile Include="Core_Platform.cpp">
+      <Filter>0_Foundation</Filter>
+    </ClCompile>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="AARendoCore.def">
+      <Filter>Definitions</Filter>
+    </None>
+  </ItemGroup>
+</Project>
