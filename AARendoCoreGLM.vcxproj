@@ -73,7 +73,7 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>AARENDOCORE_EXPORTS;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>AARENDOCORE_EXPORTS;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
@@ -110,7 +110,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>AARENDOCORE_EXPORTS;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>AARENDOCORE_EXPORTS;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
@@ -168,6 +168,14 @@
     <ClCompile Include="Core_Memory.cpp" />
     <ClCompile Include="Core_NUMA.cpp" />
     <ClCompile Include="Core_Threading.cpp" />
+  </ItemGroup>
+  
+  <!-- PHASE 2: SESSION MANAGEMENT - COMPILER PROCESSES THIRD -->
+  <ItemGroup Label="SessionManagement">
+    <ClInclude Include="Core_Session.h" />
+    <ClInclude Include="Core_SessionManager.h" />
+    <ClCompile Include="Core_Session.cpp" />
+    <ClCompile Include="Core_SessionManager.cpp" />
   </ItemGroup>
   
   <!-- Module Definition File -->

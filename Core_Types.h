@@ -123,6 +123,21 @@ struct SessionId {
     }
 };
 
+// Session ID generation - PSYCHOTIC PRECISION
+inline SessionId GenerateSessionId(u64 uniqueValue) noexcept {
+    // Incorporate timestamp and unique value for true uniqueness
+    // Upper 32 bits: timestamp component
+    // Lower 32 bits: unique counter
+    u64 timestamp = static_cast<u64>(std::chrono::high_resolution_clock::now().time_since_epoch().count());
+    u64 id = (timestamp << 32) | (uniqueValue & 0xFFFFFFFF);
+    return SessionId{id};
+}
+
+// Check if a session ID is valid (non-zero)
+inline bool ValidateSessionId(SessionId id) noexcept {
+    return id.value != 0;
+}
+
 // ============================================================================
 // RESULT TYPE - For error handling without exceptions
 // ============================================================================
@@ -252,5 +267,15 @@ static_assert(IsPowerOfTwo<PAGE_SIZE>, "Page size must be power of 2");
 static_assert(IsPowerOfTwo<ULTRA_PAGE>, "Ultra page must be power of 2");
 
 AARENDOCORE_NAMESPACE_END
+
+// ============================================================================
+// TYPE SYSTEM EXPORTS - PSYCHOTIC PRECISION
+// ============================================================================
+
+extern "C" {
+    AARENDOCORE_API const char* AARendoCore_GetTypeInfo();
+    AARENDOCORE_API uint64_t AARendoCore_GenerateSessionId();  // PSYCHOTIC PRECISION: Use uint64_t not u64 in extern C
+    AARENDOCORE_API bool AARendoCore_ValidateSessionId(uint64_t id);  // PSYCHOTIC PRECISION: Use uint64_t not u64 in extern C
+}
 
 #endif // AARENDOCOREGLM_CORE_TYPES_H

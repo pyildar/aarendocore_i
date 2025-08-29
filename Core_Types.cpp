@@ -79,12 +79,12 @@ extern "C" AARENDOCORE_API const char* AARendoCore_GetTypeInfo() {
 // Global atomic counter for session IDs
 static AtomicU64 g_nextSessionId{1};  // Start at 1, 0 is invalid
 
-extern "C" AARENDOCORE_API u64 AARendoCore_GenerateSessionId() {
+extern "C" AARENDOCORE_API uint64_t AARendoCore_GenerateSessionId() {
     // Atomic increment with memory ordering
     return g_nextSessionId.fetch_add(1, std::memory_order_relaxed);
 }
 
-extern "C" AARENDOCORE_API bool AARendoCore_ValidateSessionId(u64 id) {
+extern "C" AARENDOCORE_API bool AARendoCore_ValidateSessionId(uint64_t id) {
     // 0 is invalid, and we shouldn't exceed what we've generated
     return id > 0 && id < g_nextSessionId.load(std::memory_order_acquire);
 }

@@ -26,6 +26,7 @@ constexpr u32 DEFAULT_WORKER_THREADS = 16;           // Default thread count
 constexpr u32 THREADS_PER_NUMA_NODE = 64;            // Threads per NUMA node
 
 // Memory pool limits
+constexpr usize MEMORY_POOL_SIZE = 16 * GB;          // THE memory pool size (PSYCHOTIC PRECISION)
 constexpr usize DEFAULT_MEMORY_POOL_SIZE = 16 * GB;  // 16GB default pool
 constexpr usize MIN_MEMORY_POOL_SIZE = 1 * GB;       // 1GB minimum
 constexpr usize MAX_MEMORY_POOL_SIZE = 256 * GB;     // 256GB maximum
@@ -55,6 +56,8 @@ constexpr usize FIXED_STRING_SIZE = 256;             // Fixed string capacity
 constexpr usize FIXED_VECTOR_SIZE = 1024;            // Fixed vector capacity
 constexpr usize MAX_SYMBOL_LENGTH = 32;              // Trading symbol max length
 constexpr usize MAX_EXCHANGE_LENGTH = 16;            // Exchange name max length
+constexpr usize MAX_ACCOUNT_ID_LENGTH = 64;          // Account ID max length (PSYCHOTIC PRECISION)
+constexpr usize MAX_STRATEGY_NAME_LENGTH = 128;      // Strategy name max length (PSYCHOTIC PRECISION)
 
 // Buffer sizes
 constexpr usize TICK_BUFFER_SIZE = 65536;            // 64K ticks buffer
