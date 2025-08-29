@@ -10,6 +10,11 @@
 #include <cstring>
 #include <immintrin.h>  // For _mm_pause()
 
+// PSYCHOTIC: Define UNREFERENCED_PARAMETER for non-Windows platforms
+#ifndef UNREFERENCED_PARAMETER
+    #define UNREFERENCED_PARAMETER(P) ((void)(P))
+#endif
+
 AARENDOCORE_NAMESPACE_BEGIN
 
 // ============================================================================
