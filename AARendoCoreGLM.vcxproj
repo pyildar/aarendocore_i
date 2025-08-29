@@ -226,9 +226,11 @@
     <ClInclude Include="Core_DAGNode.h" />
     <ClInclude Include="Core_DAGBuilder.h" />
     <ClInclude Include="Core_MessageBroker.h" />
+    <ClInclude Include="Core_DAGExecutor.h" />
     <ClCompile Include="Core_DAGNode.cpp" />
     <ClCompile Include="Core_DAGBuilder.cpp" />
     <ClCompile Include="Core_MessageBroker.cpp" />
+    <ClCompile Include="Core_DAGExecutor.cpp" />
   </ItemGroup>
   
   <!-- Helper Headers -->
