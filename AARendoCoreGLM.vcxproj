@@ -217,6 +217,14 @@
     <ClCompile Include="Core_FluentAPI.cpp" />
   </ItemGroup>
   
+  <!-- PHASE 6: DAG COMPONENTS - COMPILER PROCESSES EIGHTH -->
+  <ItemGroup Label="DAGComponents">
+    <ClInclude Include="Core_MessageTypes.h" />
+    <ClInclude Include="Core_DAGTypes.h" />
+    <ClInclude Include="Core_DAGNode.h" />
+    <ClCompile Include="Core_DAGNode.cpp" />
+  </ItemGroup>
+  
   <!-- Helper Headers -->
   <ItemGroup Label="Helpers">
     <ClInclude Include="check_sizes.h" />
