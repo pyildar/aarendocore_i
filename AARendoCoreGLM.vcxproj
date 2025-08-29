@@ -88,7 +88,7 @@
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <CreateHotpatchableImage>false</CreateHotpatchableImage>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <DisableSpecificWarnings>4514;4820</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4514;4820;4324</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -127,7 +127,7 @@
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
       <CreateHotpatchableImage>false</CreateHotpatchableImage>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <DisableSpecificWarnings>4514;4820</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4514;4820;4324</DisableSpecificWarnings>
       <Optimization>MaxSpeed</Optimization>
       <WholeProgramOptimization>true</WholeProgramOptimization>
     </ClCompile>
@@ -156,6 +156,18 @@
     <ClCompile Include="Core_Types.cpp" />
     <ClCompile Include="Core_Config.cpp" />
     <ClCompile Include="Core_Alignment.cpp" />
+  </ItemGroup>
+  
+  <!-- PHASE 1: MEMORY & THREADING - COMPILER PROCESSES SECOND -->
+  <ItemGroup Label="MemoryThreading">
+    <ClInclude Include="Core_Atomic.h" />
+    <ClInclude Include="Core_Memory.h" />
+    <ClInclude Include="Core_NUMA.h" />
+    <ClInclude Include="Core_Threading.h" />
+    <ClCompile Include="Core_Atomic.cpp" />
+    <ClCompile Include="Core_Memory.cpp" />
+    <ClCompile Include="Core_NUMA.cpp" />
+    <ClCompile Include="Core_Threading.cpp" />
   </ItemGroup>
   
   <!-- Module Definition File -->

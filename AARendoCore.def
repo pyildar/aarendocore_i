@@ -38,6 +38,36 @@ EXPORTS
     AARendoCore_AlignDown
     
     ; ========================================================================
+    ; ATOMIC OPERATION EXPORTS
+    ; ========================================================================
+    AARendoCore_GetAtomicInfo
+    AARendoCore_TestSpinlockPerformance
+    AARendoCore_TestSequencePerformance
+    AARendoCore_GetNextSequence
+    AARendoCore_GetCurrentSequence
+    AARendoCore_ResetSequence
+    
+    ; ========================================================================
+    ; MEMORY MANAGEMENT EXPORTS
+    ; ========================================================================
+    AARendoCore_GetMemoryInfo
+    AARendoCore_GetMemoryUsage
+    AARendoCore_GetPeakMemoryUsage
+    
+    ; ========================================================================
+    ; NUMA EXPORTS
+    ; ========================================================================
+    AARendoCore_GetNumaInfo
+    AARendoCore_GetNumaNodes
+    AARendoCore_GetCurrentNode
+    
+    ; ========================================================================
+    ; THREADING EXPORTS
+    ; ========================================================================
+    AARendoCore_GetThreadingInfo
+    AARendoCore_GetHardwareThreads
+    
+    ; ========================================================================
     ; INITIALIZATION EXPORTS (will be added as we build)
     ; ========================================================================
     ; AARendoCore_Initialize
