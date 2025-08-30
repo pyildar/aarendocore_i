@@ -359,7 +359,7 @@ void BaseProcessingUnit::updateMetrics(u64 startTime, u32 itemsProcessed,
 // Output: true if valid
 bool BaseProcessingUnit::validateConfig(const ProcessingUnitConfig& config) const noexcept {
     // Check unit ID is valid
-    if (config.unitId.value == 0) {
+    if (config.unitId == 0) {  // ProcessingUnitId is u64, not struct
         return false;
     }
     

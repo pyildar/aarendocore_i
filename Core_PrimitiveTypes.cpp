@@ -64,7 +64,7 @@ constexpr bool IsValidSessionId(SessionId id) noexcept {
 // Output: true if valid (non-zero), false otherwise
 // Scope: Function duration
 constexpr bool IsValidProcessingUnitId(ProcessingUnitId id) noexcept {
-    return id.value > 0;
+    return id > 0;  // ProcessingUnitId is u64, not struct
 }
 
 // Origin: Function to validate StreamId
@@ -72,7 +72,7 @@ constexpr bool IsValidProcessingUnitId(ProcessingUnitId id) noexcept {
 // Output: true if valid (within stream limits), false otherwise
 // Scope: Function duration
 constexpr bool IsValidStreamId(StreamId id) noexcept {
-    return id.value < MAX_INPUT_STREAMS || id.value < MAX_OUTPUT_STREAMS;
+    return id < MAX_INPUT_STREAMS || id < MAX_OUTPUT_STREAMS;  // StreamId is u32, not struct
 }
 
 // Origin: Function to validate NodeId
@@ -97,8 +97,8 @@ namespace {
     
     // Test valid construction
     constexpr SessionId testSession(12345);
-    constexpr ProcessingUnitId testUnit(1);
-    constexpr StreamId testStream(100);
+    constexpr ProcessingUnitId testUnit = 1;     // Simple u64 value
+    constexpr StreamId testStream = 100;         // Simple u32 value
     
     // Compile-time validation
     static_assert(IsValidSessionId(testSession), "Test session ID must be valid");
