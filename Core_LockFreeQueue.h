@@ -16,7 +16,7 @@
 #include <atomic>
 #include <new>
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // LOCK-FREE QUEUE - PSYCHOTIC PERFORMANCE
@@ -279,15 +279,15 @@ public:
     }
 };
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM
 
 // ==========================================================================
 // COMPILE-TIME VALIDATION
 // ==========================================================================
 
 // Verify no mutex usage  
-template class AARendoCore::LockFreeQueue<int, 1024>;
-template class AARendoCore::MPMCQueue<int, 1024>;
+template class AARendoCoreGLM::LockFreeQueue<int, 1024>;
+template class AARendoCoreGLM::MPMCQueue<int, 1024>;
 
 // Mark header complete
 ENFORCE_HEADER_COMPLETE(Core_LockFreeQueue);

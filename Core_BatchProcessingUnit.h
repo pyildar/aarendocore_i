@@ -24,7 +24,7 @@
 static constexpr int BatchProcessingUnit_CompilationLevel = 4;
 #endif
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // BATCH PROCESSING MODES
@@ -276,16 +276,16 @@ private:
 static_assert(sizeof(BatchProcessingUnit) <= ULTRA_PAGE_SIZE * 4,
               "BatchProcessingUnit must fit in four ultra pages");
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM
 
 // ==========================================================================
 // COMPILE-TIME VALIDATION
 // ==========================================================================
 
 // Verify no mutex usage
-ENFORCE_NO_MUTEX(AARendoCore::BatchProcessingUnit);
-ENFORCE_NO_MUTEX(AARendoCore::BatchProcessingConfig);
-ENFORCE_NO_MUTEX(AARendoCore::BatchStatistics);
+ENFORCE_NO_MUTEX(AARendoCoreGLM::BatchProcessingUnit);
+ENFORCE_NO_MUTEX(AARendoCoreGLM::BatchProcessingConfig);
+ENFORCE_NO_MUTEX(AARendoCoreGLM::BatchStatistics);
 
 // Mark header complete
 ENFORCE_HEADER_COMPLETE(Core_BatchProcessingUnit);

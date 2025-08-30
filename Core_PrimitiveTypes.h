@@ -23,7 +23,7 @@
 #define CURRENT_COMPILATION_LEVEL 0
 
 // NAMESPACE: AARendoCore - All types in this namespace
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // PRIMITIVE TYPE ALIASES - EXACT SIZE ENFORCEMENT
@@ -101,17 +101,11 @@ struct TypedId {
 };
 
 // SPECIFIC ID TYPES - Origin: TypedId template, Scope: Global
-struct SessionIdTag {};
-struct ProcessingUnitIdTag {};
-struct StreamIdTag {};
-struct NodeIdTag {};
+// NOTE: SessionId is defined in Core_Types.h - NOT here to avoid conflicts
+// NOTE: ProcessingUnitId, StreamId, NodeId are defined in Core_DAGTypes.h - NOT here
 struct LogicIdTag {};
 struct TopicIdTag {};
 
-using SessionId = TypedId<SessionIdTag, u64>;
-using ProcessingUnitId = TypedId<ProcessingUnitIdTag, u32>;
-using StreamId = TypedId<StreamIdTag, u32>;
-using NodeId = TypedId<NodeIdTag, u32>;
 using LogicId = TypedId<LogicIdTag, u32>;
 using TopicId = TypedId<TopicIdTag, u32>;
 
@@ -148,20 +142,16 @@ enum class ProcessResult : u8 {
 
 // SYSTEM LIMITS - Origin: Requirements, Scope: Global compile-time constants
 constexpr u64 MAX_SESSIONS = 10'000'000;  // 10M sessions requirement
-constexpr u32 MAX_NUMA_NODES = 8;         // Maximum NUMA nodes
+// NOTE: MAX_NUMA_NODES is defined in Core_NUMA.h - NOT here to avoid conflicts
 constexpr u32 MAX_INPUT_STREAMS = 1024;   // Maximum input streams
 constexpr u32 MAX_OUTPUT_STREAMS = 1024;  // Maximum output streams
 constexpr u32 CACHE_LINE_SIZE = 64;       // CPU cache line size
-constexpr u32 PAGE_SIZE = 4096;           // Memory page size
+// NOTE: PAGE_SIZE is defined in Core_Types.h - NOT here to avoid conflicts  
 constexpr u32 ULTRA_PAGE_SIZE = 2048;     // Our ultra alignment
 constexpr u32 QUEUE_SIZE = 65536;         // Lock-free queue size (power of 2)
 constexpr u32 BUFFER_SIZE = 16384;        // Stream buffer size
 
-// MEMORY SIZES - Origin: Design requirements, Scope: Global
-constexpr u64 KB = 1024;
-constexpr u64 MB = 1024 * KB;
-constexpr u64 GB = 1024 * MB;
-constexpr u64 TB = 1024 * GB;
+// NOTE: KB, MB, GB constants are defined in Core_Types.h - NOT here to avoid conflicts
 
 // TIME CONSTANTS - Origin: Design requirements, Scope: Global
 constexpr u64 NANOSECONDS_PER_SECOND = 1'000'000'000;
@@ -189,6 +179,6 @@ static_assert((QUEUE_SIZE & (QUEUE_SIZE - 1)) == 0, "Queue size must be power of
 static_assert(MAX_SESSIONS == 10'000'000, "Must support exactly 10M sessions");
 static_assert(MAX_NUMA_NODES >= 1 && MAX_NUMA_NODES <= 256, "Valid NUMA node range");
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM
 
 #endif // AARENDOCORE_CORE_PRIMITIVETYPES_H

@@ -24,7 +24,7 @@
 static constexpr int InterpolationProcessingUnit_CompilationLevel = 4;
 #endif
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // INTERPOLATION METHODS
@@ -351,16 +351,16 @@ private:
 static_assert(sizeof(InterpolationProcessingUnit) <= ULTRA_PAGE_SIZE * 2,
               "InterpolationProcessingUnit must fit in two ultra pages");
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM
 
 // ==========================================================================
 // COMPILE-TIME VALIDATION
 // ==========================================================================
 
 // Verify no mutex usage
-ENFORCE_NO_MUTEX(AARendoCore::InterpolationProcessingUnit);
-ENFORCE_NO_MUTEX(AARendoCore::InterpolationConfig);
-ENFORCE_NO_MUTEX(AARendoCore::InterpolationStatistics);
+ENFORCE_NO_MUTEX(AARendoCoreGLM::InterpolationProcessingUnit);
+ENFORCE_NO_MUTEX(AARendoCoreGLM::InterpolationConfig);
+ENFORCE_NO_MUTEX(AARendoCoreGLM::InterpolationStatistics);
 
 // Mark header complete
 ENFORCE_HEADER_COMPLETE(Core_InterpolationProcessingUnit);

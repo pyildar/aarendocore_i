@@ -13,7 +13,7 @@
 #include <algorithm>
 #include <malloc.h>
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // CONSTRUCTOR/DESTRUCTOR
@@ -446,4 +446,4 @@ bool DataProcessingUnit::cacheData(const void* data, usize size) noexcept {
     return true;
 }
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM

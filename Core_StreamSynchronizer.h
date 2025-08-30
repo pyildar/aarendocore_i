@@ -272,7 +272,7 @@ private:
     alignas(CACHE_LINE_SIZE) f64* correlationMatrix_;
     
     // Origin: Member - Interpolation unit for time-based filling, Scope: Instance lifetime
-    AARendoCore::InterpolationProcessingUnit* interpolator_;
+    AARendoCoreGLM::InterpolationProcessingUnit* interpolator_;
     
     // Origin: Member - NUMA node for allocation, Scope: Instance lifetime
     i32 numaNode_;

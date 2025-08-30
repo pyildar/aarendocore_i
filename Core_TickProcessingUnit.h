@@ -24,7 +24,7 @@
 static constexpr int TickProcessingUnit_CompilationLevel = 4;
 #endif
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // TICK PROCESSING CONFIGURATION
@@ -275,16 +275,16 @@ private:
 static_assert(sizeof(TickProcessingUnit) <= ULTRA_PAGE_SIZE * 2,
               "TickProcessingUnit must fit in two ultra pages");
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM
 
 // ==========================================================================
 // COMPILE-TIME VALIDATION
 // ==========================================================================
 
 // Verify no mutex usage
-ENFORCE_NO_MUTEX(AARendoCore::TickProcessingUnit);
-ENFORCE_NO_MUTEX(AARendoCore::TickProcessingConfig);
-ENFORCE_NO_MUTEX(AARendoCore::TickStatistics);
+ENFORCE_NO_MUTEX(AARendoCoreGLM::TickProcessingUnit);
+ENFORCE_NO_MUTEX(AARendoCoreGLM::TickProcessingConfig);
+ENFORCE_NO_MUTEX(AARendoCoreGLM::TickStatistics);
 
 // Mark header complete
 ENFORCE_HEADER_COMPLETE(Core_TickProcessingUnit);

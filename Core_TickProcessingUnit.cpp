@@ -14,7 +14,7 @@
 #include <cstring>
 #include <malloc.h>
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // CONSTRUCTOR/DESTRUCTOR
@@ -428,4 +428,4 @@ u32 TickProcessingUnit::flushPendingTicks() noexcept {
     return flushed;
 }
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM

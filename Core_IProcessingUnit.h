@@ -14,6 +14,7 @@
 
 #include "Core_PrimitiveTypes.h"
 #include "Core_CompilerEnforce.h"
+#include "Core_DAGTypes.h"              // PSYCHOTIC PRECISION: For ProcessingUnitId
 
 // Enforce compilation level  
 #ifndef CORE_IPROCESSINGUNIT_LEVEL_DEFINED
@@ -21,30 +22,14 @@
 static constexpr int IProcessingUnit_CompilationLevel = 2;
 #endif
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // Forward declarations - Origin: Interface dependencies
-// These will be defined in Core_Types.h but we forward declare to avoid circular deps
-struct Tick {
-    u64 timestamp;
-    f64 price;
-    f64 volume;
-    u32 flags;
-};
-
-struct Order {
-    u64 orderId;
-    u32 type;
-    f64 price;
-    f64 quantity;
-};
-
-struct StreamData {
-    u32 streamId;
-    u32 dataType;
-    u64 timestamp;
-    u8 payload[256];
-};
+// These are TRULY forward declared - actual definitions in Core_Types.h
+struct Tick;
+struct Order;  
+struct StreamData;
+struct SessionId;
 
 // These are defined in Core_BaseProcessingUnit.h
 struct ProcessingUnitConfig;
@@ -80,21 +65,7 @@ enum ProcessingUnitCapability : u64 {
 // PROCESSING UNIT TYPE - Strongly typed enumeration
 // ==========================================================================
 
-// Origin: Enumeration for unit types
-// Scope: Global type identification
-enum class ProcessingUnitType : u32 {
-    INVALID    = 0,
-    TICK       = 1,
-    ORDER      = 2,
-    DATA       = 3,
-    BATCH      = 4,
-    INTERPOLATION = 5,
-    AGGREGATION = 6,
-    ROUTING    = 7,
-    PERSISTENCE = 8,
-    ML_INFERENCE = 9,
-    CUSTOM     = 100  // User-defined types start here
-};
+// NOTE: ProcessingUnitType is defined in Core_DAGTypes.h - NOT here to avoid redefinition
 
 // ==========================================================================
 // PROCESSING UNIT STATE - Atomic state machine
@@ -281,6 +252,6 @@ ENFORCE_NO_MUTEX(IProcessingUnit);
 // Mark interface complete
 ENFORCE_HEADER_COMPLETE(Core_IProcessingUnit);
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM
 
 #endif // AARENDOCORE_CORE_IPROCESSINGUNIT_H

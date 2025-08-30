@@ -11,7 +11,7 @@
 
 #include "Core_IProcessingUnit.h"
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // CAPABILITY VALIDATION FUNCTIONS
@@ -202,4 +202,4 @@ namespace {
     };
 }
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM

@@ -1,16 +1,19 @@
 //===--- Core_PrimitiveTypes.cpp - Primitive Type Implementations --------===//
 //
-// COMPILATION LEVEL: 0 (ZERO DEPENDENCIES)
-// ORIGIN: Implementation file for Core_PrimitiveTypes.h
-// DEPENDENCIES: Core_PrimitiveTypes.h only
+// COMPILATION LEVEL: 2 (After Types and DAGTypes)
+// ORIGIN: Implementation file for Core_PrimitiveTypes.h  
+// DEPENDENCIES: Core_PrimitiveTypes.h, Core_Types.h, Core_DAGTypes.h, Core_NUMA.h
 // DEPENDENTS: None
 //
 // This file contains validation and utility functions for primitive types.
 //===----------------------------------------------------------------------===//
 
 #include "Core_PrimitiveTypes.h"
+#include "Core_Types.h"                 // PSYCHOTIC PRECISION: For SessionId
+#include "Core_DAGTypes.h"              // PSYCHOTIC PRECISION: For ProcessingUnitId, StreamId, NodeId
+#include "Core_NUMA.h"                  // PSYCHOTIC PRECISION: For MAX_NUMA_NODES
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // TYPE VALIDATION FUNCTIONS
@@ -144,4 +147,4 @@ bool ValidatePrimitiveTypes() noexcept {
 static const bool primitiveTypesValid = ValidatePrimitiveTypes();
 #endif
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM

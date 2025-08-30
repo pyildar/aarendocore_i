@@ -22,7 +22,7 @@
 static constexpr int DataProcessingUnit_CompilationLevel = 4;
 #endif
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // DATA PROCESSING CONFIGURATION
@@ -197,15 +197,15 @@ private:
 static_assert(sizeof(DataProcessingUnit) <= ULTRA_PAGE_SIZE * 2,
               "DataProcessingUnit must fit in two ultra pages");
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM
 
 // ==========================================================================
 // COMPILE-TIME VALIDATION
 // ==========================================================================
 
 // Verify no mutex usage
-ENFORCE_NO_MUTEX(AARendoCore::DataProcessingUnit);
-ENFORCE_NO_MUTEX(AARendoCore::DataProcessingConfig);
+ENFORCE_NO_MUTEX(AARendoCoreGLM::DataProcessingUnit);
+ENFORCE_NO_MUTEX(AARendoCoreGLM::DataProcessingConfig);
 
 // Mark header complete
 ENFORCE_HEADER_COMPLETE(Core_DataProcessingUnit);

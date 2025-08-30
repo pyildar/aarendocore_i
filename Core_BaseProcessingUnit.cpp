@@ -11,7 +11,7 @@
 #include "Core_BaseProcessingUnit.h"
 #include <chrono>
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // CONSTRUCTOR/DESTRUCTOR
@@ -414,4 +414,4 @@ ResultCode BaseProcessingUnit::reconfigure(const ProcessingUnitConfig& config) n
 
 ENFORCE_EXTREME_PRINCIPLES();
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM

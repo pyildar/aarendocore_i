@@ -50,12 +50,12 @@ StreamSynchronizer::StreamSynchronizer(i32 numaNode) noexcept
     
     // Create interpolation unit
     // interpolatorMem: Origin - Allocated memory for interpolator, Scope: Constructor
-    void* interpolatorMem = _aligned_malloc(sizeof(AARendoCore::InterpolationProcessingUnit), ULTRA_PAGE_SIZE);
-    interpolator_ = new (interpolatorMem) AARendoCore::InterpolationProcessingUnit(numaNode);
+    void* interpolatorMem = _aligned_malloc(sizeof(AARendoCoreGLM::InterpolationProcessingUnit), ULTRA_PAGE_SIZE);
+    interpolator_ = new (interpolatorMem) AARendoCoreGLM::InterpolationProcessingUnit(numaNode);
     
     // Configure interpolator for stream synchronization
-    AARendoCore::InterpolationConfig interpConfig{};
-    interpConfig.method = AARendoCore::InterpolationMethod::ADAPTIVE;
+    AARendoCoreGLM::InterpolationConfig interpConfig{};
+    interpConfig.method = AARendoCoreGLM::InterpolationMethod::ADAPTIVE;
     interpConfig.lookaheadPoints = 4;
     interpConfig.lookbehindPoints = 4;
     interpConfig.maxGapSize = 1000;  // 1000 ticks max gap
@@ -526,7 +526,7 @@ Tick StreamSynchronizer::synchronizeStream(u32 streamId, u64 leaderTime) noexcep
         case FillStrategy::INTERPOLATE:
             // Use interpolation unit
             if (interpolator_) {
-                AARendoCore::InterpolatedPoint points[2];
+                AARendoCoreGLM::InterpolatedPoint points[2];
                 points[0].timestamp = streamTime;
                 points[0].value = states_[streamId].lastTick.price;
                 points[0].confidence = 1.0;
@@ -747,4 +747,4 @@ u32 StreamSynchronizer::synchronizeAVX2(const u32* streams, u32 count) noexcept 
     return synced;
 }
 
-} // namespace AARendoCoreGLM
+} // namespace AARendoCoreGLMGLM

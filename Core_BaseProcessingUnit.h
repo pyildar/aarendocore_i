@@ -16,6 +16,7 @@
 #include "Core_PrimitiveTypes.h"
 #include "Core_Atomic.h"
 #include "Core_NUMA.h"
+#include "Core_DAGTypes.h"              // PSYCHOTIC PRECISION: For ProcessingUnitId
 
 // Enforce compilation level
 #ifndef CORE_BASEPROCESSINGUNIT_LEVEL_DEFINED
@@ -23,7 +24,7 @@
 static constexpr int BaseProcessingUnit_CompilationLevel = 3;
 #endif
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // PROCESSING UNIT CONFIGURATION - Common config for all units
@@ -280,6 +281,6 @@ static_assert(alignof(BaseProcessingUnit) == ULTRA_PAGE_SIZE,
 // Mark header complete
 ENFORCE_HEADER_COMPLETE(Core_BaseProcessingUnit);
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM
 
 #endif // AARENDOCORE_CORE_BASEPROCESSINGUNIT_H

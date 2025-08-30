@@ -14,7 +14,7 @@
 #include <cmath>
 #include <malloc.h>
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // CONSTRUCTOR/DESTRUCTOR
@@ -827,4 +827,4 @@ InterpolationMethod InterpolationProcessingUnit::selectBestMethod(
     }
 }
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM

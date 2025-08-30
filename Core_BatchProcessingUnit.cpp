@@ -14,7 +14,7 @@
 #include <malloc.h>
 #include <chrono>
 
-namespace AARendoCore {
+namespace AARendoCoreGLM {
 
 // ==========================================================================
 // CONSTRUCTOR/DESTRUCTOR
@@ -641,4 +641,4 @@ u32 BatchProcessingUnit::filterBatch(const Tick* input, Tick* output, u32 count)
     return outputCount;
 }
 
-} // namespace AARendoCore
+} // namespace AARendoCoreGLM

@@ -80,9 +80,9 @@ using StreamId = u32;
 // Invalid ID constants
 static constexpr NodeId INVALID_NODE_ID{0};
 static constexpr DAGId INVALID_DAG_ID{0};
-static constexpr ProcessingUnitId INVALID_UNIT_ID = 0;
-static constexpr DataBufferId INVALID_BUFFER_ID = 0;
-static constexpr StreamId INVALID_STREAM_ID = 0;
+static constexpr ProcessingUnitId INVALID_UNIT_ID{0};
+static constexpr DataBufferId INVALID_BUFFER_ID{0};
+static constexpr StreamId INVALID_STREAM_ID{0};
 
 // ============================================================================
 // DAG PROPERTIES - Bitfield for DAG characteristics
