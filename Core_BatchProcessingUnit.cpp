@@ -22,7 +22,7 @@ namespace AARendoCoreGLM {
 
 // Origin: Constructor with FULL initialization
 BatchProcessingUnit::BatchProcessingUnit(i32 numaNode) noexcept
-    : BaseProcessingUnit(ProcessingUnitType::BATCH,
+    : BaseProcessingUnit(ProcessingUnitType::AGGREGATOR,
                         CAP_BATCH | CAP_STREAM | CAP_SIMD_OPTIMIZED |
                         CAP_PARALLEL | CAP_AGGREGATION | CAP_ROUTING |
                         CAP_LOCK_FREE | CAP_ZERO_COPY,

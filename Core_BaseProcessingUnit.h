@@ -12,6 +12,7 @@
 #ifndef AARENDOCORE_CORE_BASEPROCESSINGUNIT_H
 #define AARENDOCORE_CORE_BASEPROCESSINGUNIT_H
 
+#include "Core_Platform.h"               // PSYCHOTIC PRECISION: For AARENDOCORE_ULTRA_PAGE_SIZE
 #include "Core_IProcessingUnit.h"
 #include "Core_PrimitiveTypes.h"
 #include "Core_Atomic.h"
@@ -144,7 +145,7 @@ static_assert(sizeof(ProcessingUnitMetrics) == CACHE_LINE_SIZE * 2,
 
 // Origin: Abstract base class for all processing units
 // Provides common implementation to avoid duplication
-class alignas(ULTRA_PAGE_SIZE) BaseProcessingUnit : public IProcessingUnit {
+class alignas(AARENDOCORE_ULTRA_PAGE_SIZE) BaseProcessingUnit : public IProcessingUnit {
 private:
     // ======================================================================
     // PRIVATE CONSTANTS - Must be defined before use in member variables
@@ -262,7 +263,7 @@ private:
     char padding_[1536];  // Pad to 2048 bytes total
 };
 
-static_assert(sizeof(BaseProcessingUnit) == ULTRA_PAGE_SIZE,
+static_assert(sizeof(BaseProcessingUnit) == AARENDOCORE_ULTRA_PAGE_SIZE,
               "BaseProcessingUnit must be exactly one ultra page");
 
 // ==========================================================================
@@ -275,7 +276,7 @@ ENFORCE_NO_MUTEX(ProcessingUnitConfig);
 ENFORCE_NO_MUTEX(ProcessingUnitMetrics);
 
 // Verify proper alignment
-static_assert(alignof(BaseProcessingUnit) == ULTRA_PAGE_SIZE,
+static_assert(alignof(BaseProcessingUnit) == AARENDOCORE_ULTRA_PAGE_SIZE,
               "BaseProcessingUnit must be ultra-aligned");
 
 // Mark header complete

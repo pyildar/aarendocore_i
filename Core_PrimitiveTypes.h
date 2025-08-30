@@ -177,7 +177,7 @@ static_assert((QUEUE_SIZE & (QUEUE_SIZE - 1)) == 0, "Queue size must be power of
 
 // Verify system requirements
 static_assert(MAX_SESSIONS == 10'000'000, "Must support exactly 10M sessions");
-static_assert(MAX_NUMA_NODES >= 1 && MAX_NUMA_NODES <= 256, "Valid NUMA node range");
+// NOTE: MAX_NUMA_NODES validation moved to Core_NUMA.h to maintain zero dependencies
 
 } // namespace AARendoCoreGLM
 

@@ -21,7 +21,7 @@ namespace AARendoCoreGLM {
 
 // Origin: Constructor implementation with FULL initialization
 DataProcessingUnit::DataProcessingUnit(i32 numaNode) noexcept
-    : BaseProcessingUnit(ProcessingUnitType::DATA,
+    : BaseProcessingUnit(ProcessingUnitType::STREAM_NORMALIZER,
                         CAP_BATCH | CAP_STREAM | CAP_ROUTING | 
                         CAP_ZERO_COPY | CAP_LOCK_FREE,
                         numaNode)

@@ -22,7 +22,7 @@ namespace AARendoCoreGLM {
 
 // Origin: Constructor with FULL initialization
 InterpolationProcessingUnit::InterpolationProcessingUnit(i32 numaNode) noexcept
-    : BaseProcessingUnit(ProcessingUnitType::INTERPOLATION,
+    : BaseProcessingUnit(ProcessingUnitType::INTERPOLATOR,
                         CAP_TICK | CAP_BATCH | CAP_STREAM | CAP_SIMD_OPTIMIZED |
                         CAP_STATEFUL | CAP_LOCK_FREE | CAP_ZERO_COPY,
                         numaNode)

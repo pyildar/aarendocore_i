@@ -22,7 +22,7 @@ namespace AARendoCoreGLM {
 
 // Origin: Constructor implementation
 TickProcessingUnit::TickProcessingUnit(i32 numaNode) noexcept
-    : BaseProcessingUnit(ProcessingUnitType::TICK,
+    : BaseProcessingUnit(ProcessingUnitType::MARKET_DATA_RECEIVER,
                         CAP_TICK | CAP_BATCH | CAP_STREAM | CAP_SIMD_OPTIMIZED | 
                         CAP_LOCK_FREE | CAP_ZERO_COPY | CAP_REAL_TIME,
                         numaNode)

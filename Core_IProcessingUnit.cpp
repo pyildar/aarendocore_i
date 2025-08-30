@@ -50,13 +50,13 @@ constexpr bool ValidateUnitType(ProcessingUnitType type) noexcept {
     // currentValue: Origin - Local variable from enum cast, Scope: function
     const u32 currentValue = static_cast<u32>(type);
     
-    // Check standard types
-    if (currentValue <= static_cast<u32>(ProcessingUnitType::ML_INFERENCE)) {
+    // Check standard types (highest value in standard range)
+    if (currentValue <= static_cast<u32>(ProcessingUnitType::ML_PREDICTOR)) {
         return true;
     }
     
-    // Check custom types
-    if (currentValue >= static_cast<u32>(ProcessingUnitType::CUSTOM)) {
+    // Check custom types (0x5000+ range)
+    if (currentValue >= static_cast<u32>(ProcessingUnitType::ORDER_ROUTER)) {
         return true;
     }
     
@@ -176,8 +176,8 @@ namespace {
     static_assert(ValidateCapabilities(testCaps2), "Real-time requires lock-free");
     
     // Test unit type validation
-    static_assert(ValidateUnitType(ProcessingUnitType::TICK), "TICK is valid type");
-    static_assert(ValidateUnitType(ProcessingUnitType::CUSTOM), "CUSTOM is valid type");
+    static_assert(ValidateUnitType(ProcessingUnitType::MARKET_DATA_RECEIVER), "MARKET_DATA_RECEIVER is valid type");
+    static_assert(ValidateUnitType(ProcessingUnitType::ORDER_ROUTER), "ORDER_ROUTER is valid type");
     
     // Test state transitions
     static_assert(ValidateStateTransition(ProcessingUnitState::UNINITIALIZED,
