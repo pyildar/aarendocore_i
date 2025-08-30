@@ -22,7 +22,7 @@
 static constexpr int DataProcessingUnit_CompilationLevel = 4;
 #endif
 
-AARENDOCORE_NAMESPACE_BEGIN
+namespace AARendoCore {
 
 // ==========================================================================
 // DATA PROCESSING CONFIGURATION
@@ -197,7 +197,7 @@ private:
 static_assert(sizeof(DataProcessingUnit) <= ULTRA_PAGE_SIZE * 2,
               "DataProcessingUnit must fit in two ultra pages");
 
-AARENDOCORE_NAMESPACE_END
+} // namespace AARendoCore
 
 // ==========================================================================
 // COMPILE-TIME VALIDATION

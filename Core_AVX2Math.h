@@ -16,7 +16,7 @@
 #include <immintrin.h>
 #include <cmath>
 
-AARENDOCORE_NAMESPACE_BEGIN
+namespace AARendoCore {
 
 // ==========================================================================
 // AVX2 CONSTANTS - PSYCHOTIC PRECISION
@@ -288,6 +288,6 @@ public:
 // Mark header complete
 ENFORCE_HEADER_COMPLETE(Core_AVX2Math);
 
-AARENDOCORE_NAMESPACE_END
+} // namespace AARendoCore
 
 #endif // AARENDOCORE_CORE_AVX2MATH_H

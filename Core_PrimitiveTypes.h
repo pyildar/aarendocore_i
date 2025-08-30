@@ -23,7 +23,7 @@
 #define CURRENT_COMPILATION_LEVEL 0
 
 // NAMESPACE: AARendoCore - All types in this namespace
-namespace AARendoCoreGLM {
+namespace AARendoCore {
 
 // ==========================================================================
 // PRIMITIVE TYPE ALIASES - EXACT SIZE ENFORCEMENT
@@ -189,6 +189,6 @@ static_assert((QUEUE_SIZE & (QUEUE_SIZE - 1)) == 0, "Queue size must be power of
 static_assert(MAX_SESSIONS == 10'000'000, "Must support exactly 10M sessions");
 static_assert(MAX_NUMA_NODES >= 1 && MAX_NUMA_NODES <= 256, "Valid NUMA node range");
 
-} // namespace AARendoCoreGLM
+} // namespace AARendoCore
 
 #endif // AARENDOCORE_CORE_PRIMITIVETYPES_H

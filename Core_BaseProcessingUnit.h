@@ -23,7 +23,7 @@
 static constexpr int BaseProcessingUnit_CompilationLevel = 3;
 #endif
 
-AARENDOCORE_NAMESPACE_BEGIN
+namespace AARendoCore {
 
 // ==========================================================================
 // PROCESSING UNIT CONFIGURATION - Common config for all units
@@ -280,6 +280,6 @@ static_assert(alignof(BaseProcessingUnit) == ULTRA_PAGE_SIZE,
 // Mark header complete
 ENFORCE_HEADER_COMPLETE(Core_BaseProcessingUnit);
 
-AARENDOCORE_NAMESPACE_END
+} // namespace AARendoCore
 
 #endif // AARENDOCORE_CORE_BASEPROCESSINGUNIT_H

@@ -24,7 +24,7 @@
 static constexpr int TickProcessingUnit_CompilationLevel = 4;
 #endif
 
-AARENDOCORE_NAMESPACE_BEGIN
+namespace AARendoCore {
 
 // ==========================================================================
 // TICK PROCESSING CONFIGURATION
@@ -275,7 +275,7 @@ private:
 static_assert(sizeof(TickProcessingUnit) <= ULTRA_PAGE_SIZE * 2,
               "TickProcessingUnit must fit in two ultra pages");
 
-AARENDOCORE_NAMESPACE_END
+} // namespace AARendoCore
 
 // ==========================================================================
 // COMPILE-TIME VALIDATION
