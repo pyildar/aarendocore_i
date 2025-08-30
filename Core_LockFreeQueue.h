@@ -16,7 +16,7 @@
 #include <atomic>
 #include <new>
 
-namespace AARendoCore {
+AARENDOCORE_NAMESPACE_BEGIN
 
 // ==========================================================================
 // LOCK-FREE QUEUE - PSYCHOTIC PERFORMANCE
@@ -279,7 +279,7 @@ public:
     }
 };
 
-} // namespace AARendoCore
+AARENDOCORE_NAMESPACE_END
 
 // ==========================================================================
 // COMPILE-TIME VALIDATION

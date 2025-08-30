@@ -21,7 +21,7 @@
 static constexpr int IProcessingUnit_CompilationLevel = 2;
 #endif
 
-namespace AARendoCore {
+AARENDOCORE_NAMESPACE_BEGIN
 
 // Forward declarations - Origin: Interface dependencies
 // These will be defined in Core_Types.h but we forward declare to avoid circular deps
@@ -281,6 +281,6 @@ ENFORCE_NO_MUTEX(IProcessingUnit);
 // Mark interface complete
 ENFORCE_HEADER_COMPLETE(Core_IProcessingUnit);
 
-} // namespace AARendoCore
+AARENDOCORE_NAMESPACE_END
 
 #endif // AARENDOCORE_CORE_IPROCESSINGUNIT_H

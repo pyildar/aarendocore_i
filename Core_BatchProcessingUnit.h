@@ -24,7 +24,7 @@
 static constexpr int BatchProcessingUnit_CompilationLevel = 4;
 #endif
 
-namespace AARendoCore {
+AARENDOCORE_NAMESPACE_BEGIN
 
 // ==========================================================================
 // BATCH PROCESSING MODES
@@ -276,7 +276,7 @@ private:
 static_assert(sizeof(BatchProcessingUnit) <= ULTRA_PAGE_SIZE * 4,
               "BatchProcessingUnit must fit in four ultra pages");
 
-} // namespace AARendoCore
+AARENDOCORE_NAMESPACE_END
 
 // ==========================================================================
 // COMPILE-TIME VALIDATION

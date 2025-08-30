@@ -24,7 +24,7 @@
 static constexpr int InterpolationProcessingUnit_CompilationLevel = 4;
 #endif
 
-namespace AARendoCore {
+AARENDOCORE_NAMESPACE_BEGIN
 
 // ==========================================================================
 // INTERPOLATION METHODS
@@ -351,7 +351,7 @@ private:
 static_assert(sizeof(InterpolationProcessingUnit) <= ULTRA_PAGE_SIZE * 2,
               "InterpolationProcessingUnit must fit in two ultra pages");
 
-} // namespace AARendoCore
+AARENDOCORE_NAMESPACE_END
 
 // ==========================================================================
 // COMPILE-TIME VALIDATION
