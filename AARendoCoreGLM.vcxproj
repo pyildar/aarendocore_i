@@ -227,6 +227,7 @@
     <ClInclude Include="Core_DAGBuilder.h" />
     <ClInclude Include="Core_MessageBroker.h" />
     <ClInclude Include="Core_DAGExecutor.h" />
+    <ClInclude Include="Core_AVX2Math.h" />
     <ClCompile Include="Core_DAGNode.cpp" />
     <ClCompile Include="Core_DAGBuilder.cpp" />
     <ClCompile Include="Core_MessageBroker.cpp" />
