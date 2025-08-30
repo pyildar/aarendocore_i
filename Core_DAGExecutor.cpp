@@ -441,7 +441,7 @@ bool DAGExecutor::sendToDownstream(NodeId sourceNode, NodeId targetNode, const M
     // PSYCHOTIC: Direct message routing through broker
     if (broker) {
         // Create topic ID based on node ID
-        TopicId nodeTopic(static_cast<u64>(targetNode.value));
+        TopicId nodeTopic(static_cast<u32>(targetNode.value));
         
         // Publish message to node's input topic
         return broker->publish(nodeTopic, msg, MessagePriority::HIGH);
@@ -501,7 +501,7 @@ void DAGExecutor::executeNodeInternal(DAGNode* node, NodeExecutionRecord& record
     // Get messages from broker if available
     Message inputMsg;
     if (broker) {
-        TopicId nodeTopic(static_cast<u64>(node->nodeId.value));
+        TopicId nodeTopic(static_cast<u32>(node->nodeId.value));
         
         // Try to retrieve pending message
         MessageEnvelope envelope;
@@ -638,7 +638,7 @@ void DAGExecutor::handleNodeFailure(NodeId nodeId, ExecutionContext* context, u3
         if (broker) {
             MessageEnvelope envelope;
             envelope.message = record.lastOutput;
-            envelope.topic = TopicId(static_cast<u64>(nodeId.value));
+            envelope.topic = TopicId(static_cast<u32>(nodeId.value));
             envelope.priority = MessagePriority::LOW;
             envelope.deliveryMode = DeliveryMode::AT_MOST_ONCE;
             envelope.retryCount = record.stats.retryCount;

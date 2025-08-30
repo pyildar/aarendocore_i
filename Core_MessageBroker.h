@@ -15,6 +15,7 @@
 #define AARENDOCORE_CORE_MESSAGEBROKER_H
 
 #include "Core_Platform.h"
+#include "Core_PrimitiveTypes.h"
 #include "Core_Types.h"
 #include "Core_MessageTypes.h"
 #include "Core_DAGTypes.h"
@@ -26,25 +27,11 @@
 AARENDOCORE_NAMESPACE_BEGIN
 
 // ============================================================================
-// TOPIC ID - Strongly typed topic identifier
+// TOPIC ID CONSTANTS - Using TopicId from Core_PrimitiveTypes.h
 // ============================================================================
-struct TopicId {
-    u64 value;
-    
-    constexpr TopicId() noexcept : value(0) {}
-    constexpr explicit TopicId(u64 v) noexcept : value(v) {}
-    
-    constexpr bool operator==(const TopicId& other) const noexcept {
-        return value == other.value;
-    }
-    
-    constexpr bool operator!=(const TopicId& other) const noexcept {
-        return value != other.value;
-    }
-};
 
-// Invalid topic ID constant
-constexpr TopicId INVALID_TOPIC_ID(0);
+// Invalid topic ID constant  
+constexpr TopicId INVALID_TOPIC_ID(0u);
 
 // ============================================================================
 // SUBSCRIPTION ID - Unique subscription identifier
@@ -288,7 +275,7 @@ private:
     tbb::concurrent_queue<MessageEnvelope> deadLetterQueue;
     
     // ID generators
-    AtomicU64 nextTopicId;
+    AtomicU32 nextTopicId;
     AtomicU64 nextSubscriptionId;
     
     // Global statistics

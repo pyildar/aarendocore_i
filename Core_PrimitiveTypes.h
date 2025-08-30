@@ -125,7 +125,9 @@ enum class ResultCode : u32 {
     ERROR_CIRCULAR_DEPENDENCY = 7,
     ERROR_NUMA_FAILURE = 8,
     ERROR_ALIGNMENT_VIOLATION = 9,
-    ERROR_LOCK_DETECTED = 10  // Should never happen with our design
+    ERROR_LOCK_DETECTED = 10,         // Should never happen with our design
+    ERROR_ALREADY_INITIALIZED = 11,   // Component already initialized
+    ERROR_INITIALIZATION_FAILED = 12  // Component initialization failed
 };
 
 // Process result - Origin: Enumeration, Scope: Global

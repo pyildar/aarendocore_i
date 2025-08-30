@@ -56,7 +56,7 @@ TopicId MessageBroker::createTopic(const char* name, MessagePriority minPriority
     }
     
     // Generate new topic ID
-    u64 id = nextTopicId.fetch_add(1, std::memory_order_relaxed);
+    u32 id = nextTopicId.fetch_add(1, std::memory_order_relaxed);
     TopicId topicId(id);
     
     // Create topic info

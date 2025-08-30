@@ -192,6 +192,7 @@
   <ItemGroup Label="ProcessingUnits">
     <ClInclude Include="Core_IProcessingUnit.h" />
     <ClInclude Include="Core_BaseProcessingUnit.h" />
+    <ClInclude Include="Core_ProcessingUnitFactory.h" />
     <ClInclude Include="Core_TickProcessingUnit.h" />
     <ClInclude Include="Core_DataProcessingUnit.h" />
     <ClInclude Include="Core_BatchProcessingUnit.h" />
@@ -199,6 +200,7 @@
     <ClInclude Include="Core_LockFreeQueue.h" />
     <ClCompile Include="Core_IProcessingUnit.cpp" />
     <ClCompile Include="Core_BaseProcessingUnit.cpp" />
+    <ClCompile Include="Core_ProcessingUnitFactory.cpp" />
     <ClCompile Include="Core_TickProcessingUnit.cpp" />
     <ClCompile Include="Core_DataProcessingUnit.cpp" />
     <ClCompile Include="Core_BatchProcessingUnit.cpp" />
@@ -232,6 +234,12 @@
     <ClCompile Include="Core_DAGBuilder.cpp" />
     <ClCompile Include="Core_MessageBroker.cpp" />
     <ClCompile Include="Core_DAGExecutor.cpp" />
+  </ItemGroup>
+  
+  <!-- PHASE 7: SYSTEM ORCHESTRATOR - COMPILER PROCESSES NINTH (HIGHEST LEVEL) -->
+  <ItemGroup Label="SystemOrchestrator">
+    <ClInclude Include="Core_SystemOrchestrator.h" />
+    <ClCompile Include="Core_SystemOrchestrator.cpp" />
   </ItemGroup>
   
   <!-- Helper Headers -->
